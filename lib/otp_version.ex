@@ -20,6 +20,7 @@ defmodule OtpVersion do
   end
 
   # From https://github.com/hexpm/hex/blob/92f31922/lib/hex/utils.ex#L202
+  @spec get_otp_version() :: String.t()
   defp get_otp_version do
     major = :erlang.system_info(:otp_release) |> List.to_string()
     vsn_file = Path.join([:code.root_dir(), "releases", major, "OTP_VERSION"])
@@ -48,7 +49,8 @@ defmodule OtpVersion do
     end
   end
 
-  # From https://github.com/mirego/elixir-boilerplate/blob/2e5170a2/lib/mix/tasks/erlang.check_version.ex#L42
+  # Based on https://github.com/mirego/elixir-boilerplate/blob/2e5170a2/lib/mix/tasks/erlang.check_version.ex#L42
+  @spec normalize_to_semantic_versioning_scheme(String.t()) :: String.t()
   defp normalize_to_semantic_versioning_scheme(version) do
     version
     |> trim()
