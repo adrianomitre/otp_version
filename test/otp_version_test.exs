@@ -2,8 +2,10 @@ defmodule OtpVersionTest do
   use ExUnit.Case
   doctest OtpVersion
 
+  import OtpVersion, only: [otp_version: 0, otp_version: 1]
+
   test "otp_release/1" do
-    assert OtpVersion.otp_version() == OtpVersion.otp_version(:major_only)
+    assert otp_version() == otp_version(:major_only)
 
     Enum.each(
       [
@@ -12,7 +14,7 @@ defmodule OtpVersionTest do
         semantic_versioning_scheme: 3..3
       ],
       fn {version_scheme, expected_components_range} ->
-        result = OtpVersion.otp_version(version_scheme)
+        result = otp_version(version_scheme)
         assert is_binary(result)
         components = String.split(result, ".")
         assert length(components) in expected_components_range
