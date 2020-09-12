@@ -1,4 +1,6 @@
 defmodule OtpVersion do
+  @moduledoc false
+
   @doc """
   Returns the Erlang/OTP release in the specified version scheme.
   If none is specified, defaults to major version only.
