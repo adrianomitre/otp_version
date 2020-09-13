@@ -1,5 +1,27 @@
-defmodule OtpVersion do
-  @moduledoc false
+defmodule OTPVersion do
+  @moduledoc """
+  Provides access to Erlang/OTP version beyond `System.otp_release/0` (major only).
+
+  ## Example:
+
+      iex> Version.match?(OTPVersion.otp_version(:semantic_versioning_scheme), ">= 17.0.0")
+      true
+  """
+
+  @typedoc """
+  The version scheme to be passed to `otp_version/1`.
+
+  * `:otp_version_scheme` - full resolution version information; conforms to
+  [Erlang - Versions - 5.3  Version Scheme](https://erlang.org/doc/system_principles/versions.html#version-scheme)
+
+  * `:semantic_versioning_scheme` - forces Erlang/OTP version, which does not conform to SemVer,
+    into the format outlined in [SemVer 2.0 schema](https://semver.org/)
+    (i.e., `MAJOR.MINOR.PATCH`), therefore compatible with `Version`, by padding with
+    zeros after `MINOR` or truncating after `PATCH`
+
+  * `:major_only` - equivalent to `System.otp_release/0`
+  """
+  @type version_scheme :: :otp_version_scheme | :semantic_versioning_scheme | :major_only
 
   @doc false
   defmacro system_otp_release do
@@ -15,10 +37,10 @@ defmodule OtpVersion do
   end
 
   @doc """
-  Returns the Erlang/OTP release in the specified version scheme.
+  Returns the Erlang/OTP version in the specified version scheme.
   If none is specified, defaults to major version only.
   """
-  @spec otp_version(:major_only | :otp_version_scheme | :semantic_versioning_scheme) :: String.t()
+  @spec otp_version(version_scheme) :: String.t()
   def otp_version(version_scheme \\ :major_only) do
     case version_scheme do
       :major_only ->

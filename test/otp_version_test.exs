@@ -1,9 +1,9 @@
-defmodule OtpVersionTest do
+defmodule OTPVersionTest do
   use ExUnit.Case
-  doctest OtpVersion
-  require OtpVersion
+  doctest OTPVersion
+  require OTPVersion
 
-  import OtpVersion,
+  import OTPVersion,
     only: [otp_version: 0, otp_version: 1, system_otp_release: 0]
 
   test "otp_release/1" do
