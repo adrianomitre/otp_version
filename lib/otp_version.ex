@@ -54,14 +54,13 @@ defmodule OTPVersion do
     end
   end
 
-  # From https://github.com/hexpm/hex/blob/92f31922/lib/hex/utils.ex#L202
+  # Based on https://github.com/hexpm/hex/blob/92f31922/lib/hex/utils.ex#L202
   @spec get_otp_version() :: String.t()
   defp get_otp_version do
     major = system_otp_release()
-    vsn_file = Path.join([:code.root_dir(), "releases", major, "OTP_VERSION"])
 
     try do
-      {:ok, contents} = File.read(vsn_file)
+      {:ok, contents} = File.read(otp_version_file(major))
       String.split(contents, "\n", trim: true)
     else
       [full] -> full
@@ -95,5 +94,11 @@ defmodule OTPVersion do
       [major, minor] -> "#{major}.#{minor}.0"
       [major, minor, patch | _] -> "#{major}.#{minor}.#{patch}"
     end
+  end
+
+  @doc false
+  @spec otp_version_file(String.t()) :: String.t()
+  def otp_version_file(major) when is_binary(major) do
+    Path.join([:code.root_dir(), "releases", major, "OTP_VERSION"])
   end
 end
