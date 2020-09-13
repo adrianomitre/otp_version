@@ -1,6 +1,19 @@
 defmodule OtpVersion do
   @moduledoc false
 
+  @doc false
+  defmacro system_otp_release do
+    if Version.match?(System.build_info().version, ">= 1.3.0") do
+      quote do
+        System.otp_release()
+      end
+    else
+      quote do
+        :erlang.list_to_binary(:erlang.system_info(:otp_release))
+      end
+    end
+  end
+
   @doc """
   Returns the Erlang/OTP release in the specified version scheme.
   If none is specified, defaults to major version only.
@@ -9,7 +22,7 @@ defmodule OtpVersion do
   def otp_version(version_scheme \\ :major_only) do
     case version_scheme do
       :major_only ->
-        :erlang.list_to_binary(:erlang.system_info(:otp_release))
+        system_otp_release()
 
       :otp_version_scheme ->
         get_otp_version()
@@ -22,7 +35,7 @@ defmodule OtpVersion do
   # From https://github.com/hexpm/hex/blob/92f31922/lib/hex/utils.ex#L202
   @spec get_otp_version() :: String.t()
   defp get_otp_version do
-    major = :erlang.system_info(:otp_release) |> List.to_string()
+    major = system_otp_release()
     vsn_file = Path.join([:code.root_dir(), "releases", major, "OTP_VERSION"])
 
     try do
