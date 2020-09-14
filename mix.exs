@@ -1,6 +1,6 @@
-defmodule OtpVersion.MixProject do
+defmodule OTPVersion.MixProject do
   use Mix.Project
-  @version "0.1.0"
+  @version "0.1.1"
   @repo_url "https://github.com/adrianomitre/otp_version"
 
   def project do
