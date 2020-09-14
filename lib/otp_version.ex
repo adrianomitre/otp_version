@@ -38,7 +38,7 @@ defmodule OTPVersion do
 
   @doc """
   Returns the Erlang/OTP version in the specified version scheme.
-  If none is specified, defaults to major version only.
+  If none is specified, defaults to OTP version scheme.
   """
   @spec otp_version(version_scheme) :: String.t()
   def otp_version(version_scheme \\ :otp_version_scheme) do
