@@ -1,10 +1,17 @@
 defmodule OTPVersionTest do
   use ExUnit.Case
+
   doctest OTPVersion
+
   require OTPVersion
 
   import OTPVersion,
-    only: [otp_version: 0, otp_version: 1, otp_version_file: 1, system_otp_release: 0]
+    only: [
+      otp_version: 0,
+      otp_version: 1,
+      otp_version_file: 1,
+      system_otp_release: 0
+    ]
 
   defmacrop file_rename(source, destination) do
     if Version.match?(System.build_info().version, ">= 1.1.0") do

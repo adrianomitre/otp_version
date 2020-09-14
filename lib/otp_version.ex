@@ -84,8 +84,9 @@ defmodule OTPVersion do
   end
 
   # Based on https://github.com/mirego/elixir-boilerplate/blob/2e5170a2/lib/mix/tasks/erlang.check_version.ex#L42
+  @doc false
   @spec normalize_to_semantic_versioning_scheme(String.t()) :: String.t()
-  defp normalize_to_semantic_versioning_scheme(version) do
+  def normalize_to_semantic_versioning_scheme(version) do
     version
     |> trim()
     |> String.split(".")

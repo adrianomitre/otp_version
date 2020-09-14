@@ -21,6 +21,7 @@ defmodule OtpVersion.MixProject do
   defp deps do
     if Version.match?(System.version(), ">= 1.6.0") do
       [
+        {:stream_data, "~> 0.5", only: [:dev, :test], runtime: true},
         {:dialyxir, "~> 1.0", only: [:dev, :test], optional: true, runtime: false},
         {:excoveralls, "~> 0.13", only: [:dev, :test], optional: true, runtime: false},
         {:credo, "~> 1.4", only: [:dev, :test], optional: true, runtime: false},
