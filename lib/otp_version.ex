@@ -41,7 +41,7 @@ defmodule OTPVersion do
   If none is specified, defaults to major version only.
   """
   @spec otp_version(version_scheme) :: String.t()
-  def otp_version(version_scheme \\ :major_only) do
+  def otp_version(version_scheme \\ :otp_version_scheme) do
     case version_scheme do
       :major_only ->
         system_otp_release()

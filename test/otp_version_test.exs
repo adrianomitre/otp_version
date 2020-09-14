@@ -43,7 +43,7 @@ defmodule OTPVersionTest do
       assert system_otp_release() == otp_version(:major_only)
     end
 
-    assert otp_version() == otp_version(:major_only)
+    assert otp_version() == otp_version(:otp_version_scheme)
     assert {:ok, version} = Version.parse(otp_version(:semantic_versioning_scheme))
 
     Enum.each(
