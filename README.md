@@ -1,11 +1,10 @@
-# OtpVersion
+# OTPVersion
 
-**TODO: Add description**
+OTPVersion is an Elixir library for obtaining Erlang/OTP version in full resolution and, optionally, in [Version](https://hexdocs.pm/elixir/Version.html)-compatible format.
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `otp_version` to your list of dependencies in `mix.exs`:
+Add `otp_version` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
@@ -15,7 +14,6 @@ def deps do
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/otp_version](https://hexdocs.pm/otp_version).
+## Usage
 
+Documentation and examples can be found at https://hexdocs.pm/otp_version.
