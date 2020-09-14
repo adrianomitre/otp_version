@@ -16,4 +16,14 @@ end
 
 ## Usage
 
-Documentation and examples can be found at https://hexdocs.pm/otp_version.
+Assuming Erlang/OTP 21.3.8.17:
+```elixir
+iex(1)> System.otp_release()  
+"21"
+iex(2)> OTPVersion.otp_version()
+"21.3.8.17"
+iex(3)> OTPVersion.otp_version(:semantic_versioning_scheme)
+"21.3.8"
+```
+
+Documentation and more examples can be found at https://hexdocs.pm/otp_version.
