@@ -45,7 +45,8 @@ defmodule OTPVersion.MixProject do
         {:dialyxir, "~> 1.0", only: [:dev, :test], optional: true, runtime: false},
         {:excoveralls, "~> 0.13", only: [:dev, :test], optional: true, runtime: false},
         {:credo, "~> 1.4", only: [:dev, :test], optional: true, runtime: false},
-        {:ex_doc, "~> 0.22", only: [:dev, :test], optional: true, runtime: false}
+        {:ex_doc, "~> 0.22", only: [:dev, :test], optional: true, runtime: false},
+        {:sobelow, "~> 0.10", only: [:dev, :test]}
       ]
     else
       []

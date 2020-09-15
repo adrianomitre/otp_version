@@ -61,5 +61,7 @@ jobs:
       - run: mix test
       - run: mix credo --strict
         if: matrix.static_analysis
+      - run: mix sobelow
+        if: matrix.static_analysis
       - run: mix dialyzer
         if: matrix.static_analysis
