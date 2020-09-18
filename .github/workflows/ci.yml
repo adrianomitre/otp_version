@@ -59,6 +59,8 @@ jobs:
       - run: mix compile --warnings-as-errors
         if: matrix.warnings_as_errors
       - run: mix test
+      - run: mix hex.audit
+        if: matrix.static_analysis
       - run: mix credo --strict
         if: matrix.static_analysis
       - run: mix sobelow
