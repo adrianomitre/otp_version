@@ -10,6 +10,7 @@ defmodule OTPVersionTest do
       otp_version: 0,
       otp_version: 1,
       otp_version_file: 1,
+      split_components: 1,
       system_otp_release: 0
     ]
 
@@ -46,19 +47,41 @@ defmodule OTPVersionTest do
     assert otp_version() == otp_version(:otp_version_scheme)
     assert {:ok, version} = Version.parse(otp_version(:semantic_versioning_scheme))
 
-    Enum.each(
-      [
-        major_only: 1..1,
-        otp_version_scheme: 1..6,
-        semantic_versioning_scheme: 3..3
-      ],
-      fn {version_scheme, expected_components_range} ->
-        result = otp_version(version_scheme)
-        assert is_binary(result)
-        components = String.split(result, ".")
-        assert length(components) in expected_components_range
-      end
-    )
+    components_by_scheme =
+      Enum.map(
+        [
+          major_only: 1..1,
+          otp_version_scheme: 1..6,
+          semantic_versioning_scheme: 3..3
+        ],
+        fn {version_scheme, expected_components_range} ->
+          result = otp_version(version_scheme)
+          assert is_binary(result)
+          assert String.starts_with?(result, otp_version(:major_only))
+          components = split_components(result)
+          assert length(components) in expected_components_range
+          {version_scheme, components}
+        end
+      )
+      |> Enum.into(Map.new())
+
+    non_trivial_keys =
+      Map.keys(components_by_scheme)
+      |> Enum.reject(fn version_scheme -> version_scheme == :major_only end)
+
+    minimum_count =
+      non_trivial_keys
+      |> Enum.map(fn version_scheme -> Enum.count(components_by_scheme[version_scheme]) end)
+      |> Enum.min()
+
+    Enum.each(0..(minimum_count - 1), fn index ->
+      unique_components =
+        non_trivial_keys
+        |> Enum.map(fn k -> Enum.at(components_by_scheme[k], index) end)
+        |> Enum.uniq()
+
+      assert Enum.count(unique_components) == 1
+    end)
   end
 
   defp derive_temp_file(original_file) when is_binary(original_file) do

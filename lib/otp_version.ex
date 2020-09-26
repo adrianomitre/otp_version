@@ -89,12 +89,18 @@ defmodule OTPVersion do
   def normalize_to_semantic_versioning_scheme(version) do
     version
     |> trim()
-    |> String.split(".")
+    |> split_components()
     |> case do
       [major] -> "#{major}.0.0"
       [major, minor] -> "#{major}.#{minor}.0"
       [major, minor, patch | _] -> "#{major}.#{minor}.#{patch}"
     end
+  end
+
+  @doc false
+  @spec split_components(String.t()) :: list(String.t())
+  def split_components(string) do
+    String.split(string, ".")
   end
 
   @doc false
