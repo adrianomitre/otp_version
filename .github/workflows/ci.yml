@@ -43,6 +43,7 @@ jobs:
             otp: 23.0.4
             warnings_as_errors: true
             static_analysis: true
+            report_coverage: true
     env:
       MIX_ENV: test
     steps:
@@ -59,6 +60,10 @@ jobs:
       - run: mix compile --warnings-as-errors
         if: matrix.warnings_as_errors
       - run: mix test
+      - run: |
+          mix coveralls.json
+          bash <(curl -s https://codecov.io/bash)
+        if: matrix.report_coverage
       - run: mix hex.audit
         if: matrix.static_analysis
       - run: mix credo --strict
