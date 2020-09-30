@@ -1,3 +1,5 @@
+[![Actions Status](https://github.com/adrianomitre/otp_version/workflows/Elixir%20CI/badge.svg)](https://github.com/adrianomitre/otp_version/actions) [![codecov](https://codecov.io/gh/adrianomitre/otp_version/branch/master/graph/badge.svg?precision=2)](https://codecov.io/gh/adrianomitre/otp_version)
+
 # OTPVersion
 
 OTPVersion is an Elixir library for obtaining Erlang/OTP version in full resolution and, optionally, in [Version](https://hexdocs.pm/elixir/Version.html)-compatible format.
