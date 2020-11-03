@@ -45,7 +45,7 @@ defmodule OTPVersionTest do
     end
 
     assert otp_version() == otp_version(:otp_version_scheme)
-    assert {:ok, version} = Version.parse(otp_version(:semantic_versioning_scheme))
+    assert {:ok, _version} = Version.parse(otp_version(:semantic_versioning_scheme))
 
     components_by_scheme =
       Enum.map(
