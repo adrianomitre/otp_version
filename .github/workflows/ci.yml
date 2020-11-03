@@ -67,6 +67,8 @@ jobs:
         if: matrix.report_coverage
       - run: mix hex.audit
         if: matrix.static_analysis
+      - run: mix deps.get
+        if: matrix.static_analysis
       - run: mix credo --strict
         if: matrix.static_analysis
       - run: mix sobelow

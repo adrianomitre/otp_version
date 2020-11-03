@@ -44,7 +44,7 @@ defmodule OTPVersion.MixProject do
         {:stream_data, "~> 0.5", only: [:dev, :test], runtime: true},
         {:dialyxir, "~> 1.0", only: [:dev, :test], optional: true, runtime: false},
         {:excoveralls, "~> 0.13", only: [:dev, :test], optional: true, runtime: false},
-        {:credo, "~> 1.5", only: [:dev, :test], optional: true, runtime: false},
+        {:credo, "~> 1.5", only: [:dev], optional: true, runtime: false},
         {:ex_doc, "~> 0.22", only: [:dev, :test], optional: true, runtime: false},
         {:sobelow, "~> 0.10", only: [:dev, :test]}
       ]
