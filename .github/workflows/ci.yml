@@ -70,6 +70,8 @@ jobs:
       - run: mix deps.get
         if: matrix.static_analysis
       - run: mix credo --strict
+        env:
+          MIX_ENV: dev
         if: matrix.static_analysis
       - run: mix sobelow
         if: matrix.static_analysis
