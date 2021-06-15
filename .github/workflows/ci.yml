@@ -35,13 +35,15 @@ jobs:
           - elixir: 1.9.x
             otp: 20.3.8.26
           - elixir: 1.10.x
-            otp: 21.3.8.20
+            otp: 21.3.8.24
           - elixir: 1.11.x
-            otp: 21.3.8.20
+            otp: 21.3.8.24
           - elixir: 1.11.x
-            otp: 22.3.4.15
+            otp: 22.3.4.20
           - elixir: 1.11.x
-            otp: 23.2.3
+            otp: 23.3.4.3
+          - elixir: 1.12.x
+            otp: 22.3.4.20
           - elixir: 1.12.x
             otp: 24.0.2
             warnings_as_errors: true
