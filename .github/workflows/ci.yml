@@ -42,6 +42,8 @@ jobs:
             otp: 22.3.4.15
           - elixir: 1.11.x
             otp: 23.2.3
+          - elixir: 1.12.x
+            otp: 24.0.2
             warnings_as_errors: true
             static_analysis: true
             report_coverage: true
