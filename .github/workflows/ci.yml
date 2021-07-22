@@ -41,11 +41,11 @@ jobs:
           - elixir: 1.11.x
             otp: 22.3.4.20
           - elixir: 1.11.x
-            otp: 23.3.4.3
+            otp: 23.3.4.5
           - elixir: 1.12.x
             otp: 22.3.4.20
           - elixir: 1.12.x
-            otp: 24.0.2
+            otp: 24.0.4
             warnings_as_errors: true
             static_analysis: true
             report_coverage: true
